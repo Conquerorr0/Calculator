@@ -15,7 +15,4 @@ class Calculate{
    public int bol(int a, int b){
        return a/b;
    }
-   
-        
-    
 }
