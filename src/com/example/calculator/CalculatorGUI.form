@@ -57,7 +57,7 @@
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btnOpenPrnths" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnDel" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="btnClosePrnths" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -103,13 +103,8 @@
                   </Group>
               </Group>
           </Group>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblInput" max="32767" attributes="0"/>
-                  <Component id="jLabel1" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jScrollPane1" max="32767" attributes="0"/>
+          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -117,11 +112,11 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="102" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblInput" min="-2" pref="100" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnOpenPrnths" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnDel" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="btnClosePrnths" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="btnPercantage" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="btnDivide" min="-2" pref="40" max="-2" attributes="0"/>
@@ -179,6 +174,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEqualsActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPlus">
       <Properties>
@@ -197,6 +196,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPlusActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnMinus">
       <Properties>
@@ -215,6 +218,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinusActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTimes">
       <Properties>
@@ -233,6 +240,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimesActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDivide">
       <Properties>
@@ -251,6 +262,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDivideActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnComma">
       <Properties>
@@ -269,6 +284,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCommaActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnThree">
       <Properties>
@@ -287,6 +306,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSix">
       <Properties>
@@ -305,6 +328,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnNine">
       <Properties>
@@ -323,6 +350,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPercantage">
       <Properties>
@@ -341,6 +372,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPercantageActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSeven">
       <Properties>
@@ -359,8 +394,12 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnOpenPrnths">
+    <Component class="javax.swing.JButton" name="btnDel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
@@ -368,7 +407,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Fax" size="16" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="("/>
+        <Property name="text" type="java.lang.String" value="DEL"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="2">
@@ -377,6 +416,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDelActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnZero">
       <Properties>
@@ -398,6 +441,10 @@
           <Color id="Default Cursor"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTwo">
       <Properties>
@@ -416,6 +463,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFive">
       <Properties>
@@ -434,6 +485,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEight">
       <Properties>
@@ -452,6 +507,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnClosePrnths">
       <Properties>
@@ -461,7 +520,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Fax" size="16" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value=")"/>
+        <Property name="text" type="java.lang.String" value="()"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="2">
@@ -470,6 +529,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClosePrnthsActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnC">
       <Properties>
@@ -488,6 +551,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnOne">
       <Properties>
@@ -506,6 +573,10 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFour">
       <Properties>
@@ -524,24 +595,48 @@
           </Border>
         </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblInput">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Lucida Fax" size="24" style="1"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Input"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Fax" size="18" style="1"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Result"/>
       </Properties>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextPane" name="txtInput">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Fax" size="24" style="1"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Metni sa&#x11f;a hizala&#xa;StyledDocument doc = txtInput.getStyledDocument();&#xa;SimpleAttributeSet rightAlign = new SimpleAttributeSet();&#xa;StyleConstants.setAlignment(rightAlign, StyleConstants.ALIGN_RIGHT);&#xa;doc.setParagraphAttributes(0, doc.getLength(), rightAlign, false);"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

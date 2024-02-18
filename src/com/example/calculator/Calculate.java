@@ -23,4 +23,8 @@ class Calculate {
         return a * b / 100;
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> frontendOperations
