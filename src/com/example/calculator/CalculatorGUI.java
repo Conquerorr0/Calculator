@@ -5,7 +5,9 @@
 package com.example.calculator;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+
 /**
  *
  * @author User
@@ -13,6 +15,7 @@ import javax.swing.ImageIcon;
 public class CalculatorGUI extends javax.swing.JFrame {
 
     private String input;
+
     /**
      * Creates new form CalculatorGUI
      */
@@ -22,7 +25,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);    // Pencerenin ekranın ortasında çıkmasını sağlıyor
         input = "";
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,6 +114,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
                 btnZeroActionPerformed(evt);
             }
         });
+        btnThree.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnSix.setBackground(new java.awt.Color(204, 204, 204));
         btnSix.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
@@ -121,6 +129,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
                 btnZeroActionPerformed(evt);
             }
         });
+        btnSix.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnNine.setBackground(new java.awt.Color(204, 204, 204));
         btnNine.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
@@ -129,6 +142,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnNine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZeroActionPerformed(evt);
+            }
+        });
+        btnNine.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
             }
         });
 
@@ -144,6 +162,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnSeven.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZeroActionPerformed(evt);
+            }
+        });
+        btnSeven.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
             }
         });
 
@@ -162,6 +185,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
                 btnZeroActionPerformed(evt);
             }
         });
+        btnZero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnTwo.setBackground(new java.awt.Color(204, 204, 204));
         btnTwo.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
@@ -170,6 +198,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnTwo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZeroActionPerformed(evt);
+            }
+        });
+        btnTwo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
             }
         });
 
@@ -182,6 +215,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
                 btnZeroActionPerformed(evt);
             }
         });
+        btnFive.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnEight.setBackground(new java.awt.Color(204, 204, 204));
         btnEight.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
@@ -190,6 +228,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnEight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZeroActionPerformed(evt);
+            }
+        });
+        btnEight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
             }
         });
 
@@ -212,6 +255,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
                 btnZeroActionPerformed(evt);
             }
         });
+        btnOne.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnFour.setBackground(new java.awt.Color(204, 204, 204));
         btnFour.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
@@ -220,6 +268,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnFour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZeroActionPerformed(evt);
+            }
+        });
+        btnFour.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
             }
         });
 
@@ -373,6 +426,46 @@ public class CalculatorGUI extends javax.swing.JFrame {
                 throw new AssertionError();
         }
     }//GEN-LAST:event_btnZeroActionPerformed
+
+    private void btnZeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnZeroKeyPressed
+        // İlgili klavye tuşlarıylada işlem yapabilme
+        int keyCode = evt.getKeyCode();
+
+        if (keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_NUMPAD0) {
+            input += "0";
+            lblInput.setText(input);
+        } else if (keyCode == KeyEvent.VK_1 || keyCode == KeyEvent.VK_NUMPAD1) {
+            input += "1";
+            lblInput.setText(input);
+        } else if (keyCode == KeyEvent.VK_2 || keyCode == KeyEvent.VK_NUMPAD2) {
+            input += "2";
+            lblInput.setText(input);
+        } else if (keyCode == KeyEvent.VK_3 || keyCode == KeyEvent.VK_NUMPAD3) {
+            input += "3";
+            lblInput.setText(input);
+        } else if (keyCode == KeyEvent.VK_4 || keyCode == KeyEvent.VK_NUMPAD4) {
+            input += "4";
+            lblInput.setText(input);
+        } else if (keyCode == KeyEvent.VK_5 || keyCode == KeyEvent.VK_NUMPAD5) {
+            input += "5";
+            lblInput.setText(input);
+        } else if (keyCode == KeyEvent.VK_6 || keyCode == KeyEvent.VK_NUMPAD6) {
+            input += "6";
+            lblInput.setText(input);
+        } else if (keyCode == KeyEvent.VK_7 || keyCode == KeyEvent.VK_NUMPAD7) {
+            input += "7";
+            lblInput.setText(input);
+        } else if (keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_NUMPAD8) {
+            input += "8";
+            lblInput.setText(input);
+        } else if (keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_NUMPAD9) {
+            input += "9";
+            lblInput.setText(input);
+        } else {
+            throw new AssertionError();
+        }
+
+    }//GEN-LAST:event_btnZeroKeyPressed
 
     /**
      * @param args the command line arguments
