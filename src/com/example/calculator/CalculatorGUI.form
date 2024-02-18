@@ -287,6 +287,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSix">
       <Properties>
@@ -305,6 +308,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnNine">
       <Properties>
@@ -323,6 +329,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPercantage">
       <Properties>
@@ -359,6 +368,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnOpenPrnths">
       <Properties>
@@ -398,6 +410,9 @@
           <Color id="Default Cursor"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTwo">
       <Properties>
@@ -416,6 +431,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFive">
       <Properties>
@@ -434,6 +452,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEight">
       <Properties>
@@ -452,6 +473,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnClosePrnths">
       <Properties>
@@ -506,6 +530,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFour">
       <Properties>
@@ -524,6 +551,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblInput">
       <Properties>

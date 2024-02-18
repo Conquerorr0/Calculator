@@ -12,12 +12,15 @@ import javax.swing.ImageIcon;
  */
 public class CalculatorGUI extends javax.swing.JFrame {
 
+    private String input;
     /**
      * Creates new form CalculatorGUI
      */
     public CalculatorGUI() {
         initComponents();
-        getContentPane().setBackground(Color.decode("#9CA6AB"));
+        getContentPane().setBackground(Color.decode("#9CA6AB"));    // Arka plan rengi
+        setLocationRelativeTo(null);    // Pencerenin ekranın ortasında çıkmasını sağlıyor
+        input = "";
     }
     
     /**
@@ -103,16 +106,31 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnThree.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnThree.setText("3");
         btnThree.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnThree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
 
         btnSix.setBackground(new java.awt.Color(204, 204, 204));
         btnSix.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnSix.setText("6");
         btnSix.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnSix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
 
         btnNine.setBackground(new java.awt.Color(204, 204, 204));
         btnNine.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnNine.setText("9");
         btnNine.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnNine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
 
         btnPercantage.setBackground(new java.awt.Color(153, 153, 153));
         btnPercantage.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
@@ -123,6 +141,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnSeven.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnSeven.setText("7");
         btnSeven.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnSeven.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
 
         btnOpenPrnths.setBackground(new java.awt.Color(153, 153, 153));
         btnOpenPrnths.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
@@ -134,21 +157,41 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnZero.setText("0");
         btnZero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
         btnZero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnZero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
 
         btnTwo.setBackground(new java.awt.Color(204, 204, 204));
         btnTwo.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnTwo.setText("2");
         btnTwo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
 
         btnFive.setBackground(new java.awt.Color(204, 204, 204));
         btnFive.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnFive.setText("5");
         btnFive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnFive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
 
         btnEight.setBackground(new java.awt.Color(204, 204, 204));
         btnEight.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnEight.setText("8");
         btnEight.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnEight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
 
         btnClosePrnths.setBackground(new java.awt.Color(153, 153, 153));
         btnClosePrnths.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
@@ -164,11 +207,21 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnOne.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnOne.setText("1");
         btnOne.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnOne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
 
         btnFour.setBackground(new java.awt.Color(204, 204, 204));
         btnFour.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnFour.setText("4");
         btnFour.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnFour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
 
         lblInput.setFont(new java.awt.Font("Lucida Fax", 1, 24)); // NOI18N
         lblInput.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -272,6 +325,54 @@ public class CalculatorGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZeroActionPerformed
+        // Buton grup ile rakam butonlarının hepsinin işlemlerini burada yapacağız
+        switch (evt.getActionCommand()) {
+            case "0":
+                input += "0";
+                lblInput.setText(input);
+                break;
+            case "1":
+                input += "1";
+                lblInput.setText(input);
+                break;
+            case "2":
+                input += "2";
+                lblInput.setText(input);
+                break;
+            case "3":
+                input += "3";
+                lblInput.setText(input);
+                break;
+            case "4":
+                input += "4";
+                lblInput.setText(input);
+                break;
+            case "5":
+                input += "5";
+                lblInput.setText(input);
+                break;
+            case "6":
+                input += "6";
+                lblInput.setText(input);
+                break;
+            case "7":
+                input += "7";
+                lblInput.setText(input);
+                break;
+            case "8":
+                input += "8";
+                lblInput.setText(input);
+                break;
+            case "9":
+                input += "9";
+                lblInput.setText(input);
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }//GEN-LAST:event_btnZeroActionPerformed
 
     /**
      * @param args the command line arguments
