@@ -87,31 +87,91 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnEquals.setForeground(new java.awt.Color(255, 255, 255));
         btnEquals.setText("=");
         btnEquals.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnEquals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEqualsActionPerformed(evt);
+            }
+        });
+        btnEquals.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnPlus.setBackground(new java.awt.Color(153, 153, 153));
         btnPlus.setFont(new java.awt.Font("Lucida Fax", 1, 24)); // NOI18N
         btnPlus.setText("+");
         btnPlus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnPlus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlusActionPerformed(evt);
+            }
+        });
+        btnPlus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnMinus.setBackground(new java.awt.Color(153, 153, 153));
         btnMinus.setFont(new java.awt.Font("Lucida Fax", 1, 36)); // NOI18N
         btnMinus.setText("-");
         btnMinus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnMinus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinusActionPerformed(evt);
+            }
+        });
+        btnMinus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnTimes.setBackground(new java.awt.Color(153, 153, 153));
         btnTimes.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnTimes.setText("x");
         btnTimes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnTimes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimesActionPerformed(evt);
+            }
+        });
+        btnTimes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnDivide.setBackground(new java.awt.Color(153, 153, 153));
         btnDivide.setFont(new java.awt.Font("Lucida Fax", 1, 24)); // NOI18N
         btnDivide.setText("÷");
         btnDivide.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnDivide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDivideActionPerformed(evt);
+            }
+        });
+        btnDivide.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnComma.setBackground(new java.awt.Color(153, 153, 153));
         btnComma.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnComma.setText(",");
         btnComma.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnComma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCommaActionPerformed(evt);
+            }
+        });
+        btnComma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnThree.setBackground(new java.awt.Color(204, 204, 204));
         btnThree.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
@@ -162,6 +222,16 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnPercantage.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
         btnPercantage.setText("%");
         btnPercantage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnPercantage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPercantageActionPerformed(evt);
+            }
+        });
+        btnPercantage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnSeven.setBackground(new java.awt.Color(204, 204, 204));
         btnSeven.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
@@ -182,6 +252,16 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnDel.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
         btnDel.setText("DEL");
         btnDel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelActionPerformed(evt);
+            }
+        });
+        btnDel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnZero.setBackground(new java.awt.Color(204, 204, 204));
         btnZero.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
@@ -248,11 +328,31 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnClosePrnths.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
         btnClosePrnths.setText("()");
         btnClosePrnths.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnClosePrnths.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClosePrnthsActionPerformed(evt);
+            }
+        });
+        btnClosePrnths.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnC.setBackground(new java.awt.Color(153, 153, 153));
         btnC.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         btnC.setText("C");
         btnC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCActionPerformed(evt);
+            }
+        });
+        btnC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
 
         btnOne.setBackground(new java.awt.Color(204, 204, 204));
         btnOne.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
@@ -285,6 +385,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Result");
 
@@ -403,7 +504,6 @@ public class CalculatorGUI extends javax.swing.JFrame {
     private void btnZeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnZeroKeyPressed
         // İlgili klavye tuşlarıylada işlem yapabilme
         int keyCode = evt.getKeyCode();
-        System.out.println("asdas");
         if (keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_NUMPAD0) {
             handleNumericButton("0");
         } else if (keyCode >= KeyEvent.VK_1 && keyCode <= KeyEvent.VK_9) {
@@ -412,16 +512,80 @@ public class CalculatorGUI extends javax.swing.JFrame {
         } else if (keyCode >= KeyEvent.VK_NUMPAD1 && keyCode <= KeyEvent.VK_NUMPAD9) {
             char inputChar = (char) ('0' + (keyCode - KeyEvent.VK_NUMPAD1 + 1));
             handleNumericButton(String.valueOf(inputChar));
+        } else if (keyCode == 107) {
+            handleOperatorButton("+");
+        } else if (keyCode == 109) {
+            handleOperatorButton("-");
+        } else if (keyCode == KeyEvent.VK_MULTIPLY) {
+            handleOperatorButton("x");
+        } else if (keyCode == KeyEvent.VK_DIVIDE) {
+            handleOperatorButton("÷");
+        } else if((keyCode == KeyEvent.VK_DELETE || keyCode == KeyEvent.VK_BACK_SPACE) && !input.equals("")){
+            deleteProcess();
         } else {
             System.out.println("Yanlis giris");
         }
     }//GEN-LAST:event_btnZeroKeyPressed
+
+    private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
+        input = "";
+        txtInput.setText(input);
+    }//GEN-LAST:event_btnCActionPerformed
 
     private void handleNumericButton(String digit) {
         input += digit;
         txtInput.setText(input);
     }
 
+    private void handleOperatorButton(String operator) {
+        input += operator;
+        txtInput.setText(input);
+    }
+
+    private void btnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlusActionPerformed
+        handleOperatorButton("+");
+    }//GEN-LAST:event_btnPlusActionPerformed
+
+    private void btnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusActionPerformed
+        handleOperatorButton("-");
+    }//GEN-LAST:event_btnMinusActionPerformed
+
+    private void btnTimesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimesActionPerformed
+        handleOperatorButton("x");
+    }//GEN-LAST:event_btnTimesActionPerformed
+
+    private void btnDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivideActionPerformed
+        handleOperatorButton("÷");
+    }//GEN-LAST:event_btnDivideActionPerformed
+
+    private void btnPercantageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPercantageActionPerformed
+        handleOperatorButton("%");
+    }//GEN-LAST:event_btnPercantageActionPerformed
+
+    private void btnClosePrnthsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClosePrnthsActionPerformed
+        input = "(" + input + ")";
+        txtInput.setText(input);
+    }//GEN-LAST:event_btnClosePrnthsActionPerformed
+
+    private void btnCommaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommaActionPerformed
+        // , işlemi burada sayıyı double'a çevirecek
+    }//GEN-LAST:event_btnCommaActionPerformed
+
+    private void btnEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsActionPerformed
+        // Hesaplamanın sonucu burada
+    }//GEN-LAST:event_btnEqualsActionPerformed
+
+    private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
+        if(!input.equals("")) deleteProcess();
+    }//GEN-LAST:event_btnDelActionPerformed
+    private void deleteProcess(){
+        if(input.charAt(input.length()-1) == ')'){
+            input = input.substring(1, input.length()-1);
+        }else{
+            input = input.substring(0, input.length()-1);
+        }
+        txtInput.setText(input);
+    }
     /**
      * @param args the command line arguments
      */
@@ -501,7 +665,7 @@ class MyKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        // Implement your key released logic here if needed
     }
 
     @Override
