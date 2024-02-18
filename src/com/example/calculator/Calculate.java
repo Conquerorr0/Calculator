@@ -22,9 +22,4 @@ class Calculate {
     public double percentage(double a, double b) {
         return a * b / 100;
     }
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> frontendOperations
