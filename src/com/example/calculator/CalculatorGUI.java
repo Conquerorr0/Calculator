@@ -6,7 +6,11 @@ package com.example.calculator;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -24,6 +28,9 @@ public class CalculatorGUI extends javax.swing.JFrame {
         getContentPane().setBackground(Color.decode("#9CA6AB"));    // Arka plan rengi
         setLocationRelativeTo(null);    // Pencerenin ekranın ortasında çıkmasını sağlıyor
         input = "";
+        txtInput.setBackground(Color.decode("#9CA6AB"));
+        txtInput.setFocusable(true);
+        txtInput.addKeyListener(new MyKeyListener());
     }
 
     /**
@@ -50,7 +57,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnNine = new javax.swing.JButton();
         btnPercantage = new javax.swing.JButton();
         btnSeven = new javax.swing.JButton();
-        btnOpenPrnths = new javax.swing.JButton();
+        btnDel = new javax.swing.JButton();
         btnZero = new javax.swing.JButton();
         btnTwo = new javax.swing.JButton();
         btnFive = new javax.swing.JButton();
@@ -59,8 +66,9 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnC = new javax.swing.JButton();
         btnOne = new javax.swing.JButton();
         btnFour = new javax.swing.JButton();
-        lblInput = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtInput = new javax.swing.JTextPane();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -170,10 +178,10 @@ public class CalculatorGUI extends javax.swing.JFrame {
             }
         });
 
-        btnOpenPrnths.setBackground(new java.awt.Color(153, 153, 153));
-        btnOpenPrnths.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
-        btnOpenPrnths.setText("(");
-        btnOpenPrnths.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        btnDel.setBackground(new java.awt.Color(153, 153, 153));
+        btnDel.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
+        btnDel.setText("DEL");
+        btnDel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
 
         btnZero.setBackground(new java.awt.Color(204, 204, 204));
         btnZero.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
@@ -238,7 +246,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
 
         btnClosePrnths.setBackground(new java.awt.Color(153, 153, 153));
         btnClosePrnths.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
-        btnClosePrnths.setText(")");
+        btnClosePrnths.setText("()");
         btnClosePrnths.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
 
         btnC.setBackground(new java.awt.Color(153, 153, 153));
@@ -276,13 +284,24 @@ public class CalculatorGUI extends javax.swing.JFrame {
             }
         });
 
-        lblInput.setFont(new java.awt.Font("Lucida Fax", 1, 24)); // NOI18N
-        lblInput.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblInput.setText("Input");
-
         jLabel1.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Result");
+
+        txtInput.setEditable(false);
+        txtInput.setBackground(new java.awt.Color(153, 153, 153));
+        txtInput.setFont(new java.awt.Font("Lucida Fax", 1, 24)); // NOI18N
+        txtInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnZeroKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(txtInput);
+        // Metni sağa hizala
+        StyledDocument doc = txtInput.getStyledDocument();
+        SimpleAttributeSet rightAlign = new SimpleAttributeSet();
+        StyleConstants.setAlignment(rightAlign, StyleConstants.ALIGN_RIGHT);
+        doc.setParagraphAttributes(0, doc.getLength(), rightAlign, false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,7 +311,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnOpenPrnths, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btnClosePrnths, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -331,22 +350,19 @@ public class CalculatorGUI extends javax.swing.JFrame {
                         .addComponent(btnComma, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btnEquals, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jScrollPane1)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblInput, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnOpenPrnths, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClosePrnths, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPercantage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDivide, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -381,91 +397,30 @@ public class CalculatorGUI extends javax.swing.JFrame {
 
     private void btnZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZeroActionPerformed
         // Buton grup ile rakam butonlarının hepsinin işlemlerini burada yapacağız
-        switch (evt.getActionCommand()) {
-            case "0":
-                input += "0";
-                lblInput.setText(input);
-                break;
-            case "1":
-                input += "1";
-                lblInput.setText(input);
-                break;
-            case "2":
-                input += "2";
-                lblInput.setText(input);
-                break;
-            case "3":
-                input += "3";
-                lblInput.setText(input);
-                break;
-            case "4":
-                input += "4";
-                lblInput.setText(input);
-                break;
-            case "5":
-                input += "5";
-                lblInput.setText(input);
-                break;
-            case "6":
-                input += "6";
-                lblInput.setText(input);
-                break;
-            case "7":
-                input += "7";
-                lblInput.setText(input);
-                break;
-            case "8":
-                input += "8";
-                lblInput.setText(input);
-                break;
-            case "9":
-                input += "9";
-                lblInput.setText(input);
-                break;
-            default:
-                throw new AssertionError();
-        }
+        handleNumericButton(evt.getActionCommand());
     }//GEN-LAST:event_btnZeroActionPerformed
 
     private void btnZeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnZeroKeyPressed
         // İlgili klavye tuşlarıylada işlem yapabilme
         int keyCode = evt.getKeyCode();
-
+        System.out.println("asdas");
         if (keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_NUMPAD0) {
-            input += "0";
-            lblInput.setText(input);
-        } else if (keyCode == KeyEvent.VK_1 || keyCode == KeyEvent.VK_NUMPAD1) {
-            input += "1";
-            lblInput.setText(input);
-        } else if (keyCode == KeyEvent.VK_2 || keyCode == KeyEvent.VK_NUMPAD2) {
-            input += "2";
-            lblInput.setText(input);
-        } else if (keyCode == KeyEvent.VK_3 || keyCode == KeyEvent.VK_NUMPAD3) {
-            input += "3";
-            lblInput.setText(input);
-        } else if (keyCode == KeyEvent.VK_4 || keyCode == KeyEvent.VK_NUMPAD4) {
-            input += "4";
-            lblInput.setText(input);
-        } else if (keyCode == KeyEvent.VK_5 || keyCode == KeyEvent.VK_NUMPAD5) {
-            input += "5";
-            lblInput.setText(input);
-        } else if (keyCode == KeyEvent.VK_6 || keyCode == KeyEvent.VK_NUMPAD6) {
-            input += "6";
-            lblInput.setText(input);
-        } else if (keyCode == KeyEvent.VK_7 || keyCode == KeyEvent.VK_NUMPAD7) {
-            input += "7";
-            lblInput.setText(input);
-        } else if (keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_NUMPAD8) {
-            input += "8";
-            lblInput.setText(input);
-        } else if (keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_NUMPAD9) {
-            input += "9";
-            lblInput.setText(input);
+            handleNumericButton("0");
+        } else if (keyCode >= KeyEvent.VK_1 && keyCode <= KeyEvent.VK_9) {
+            char inputChar = (char) ('0' + (keyCode - KeyEvent.VK_1 + 1));
+            handleNumericButton(String.valueOf(inputChar));
+        } else if (keyCode >= KeyEvent.VK_NUMPAD1 && keyCode <= KeyEvent.VK_NUMPAD9) {
+            char inputChar = (char) ('0' + (keyCode - KeyEvent.VK_NUMPAD1 + 1));
+            handleNumericButton(String.valueOf(inputChar));
         } else {
-            throw new AssertionError();
+            System.out.println("Yanlis giris");
         }
-
     }//GEN-LAST:event_btnZeroKeyPressed
+
+    private void handleNumericButton(String digit) {
+        input += digit;
+        txtInput.setText(input);
+    }
 
     /**
      * @param args the command line arguments
@@ -496,6 +451,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new CalculatorGUI().setVisible(true);
             }
@@ -506,6 +462,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnC;
     private javax.swing.JButton btnClosePrnths;
     private javax.swing.JButton btnComma;
+    private javax.swing.JButton btnDel;
     private javax.swing.JButton btnDivide;
     private javax.swing.JButton btnEight;
     private javax.swing.JButton btnEquals;
@@ -514,7 +471,6 @@ public class CalculatorGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnMinus;
     private javax.swing.JButton btnNine;
     private javax.swing.JButton btnOne;
-    private javax.swing.JButton btnOpenPrnths;
     private javax.swing.JButton btnPercantage;
     private javax.swing.JButton btnPlus;
     private javax.swing.JButton btnSeven;
@@ -528,6 +484,33 @@ public class CalculatorGUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JLabel lblInput;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane txtInput;
     // End of variables declaration//GEN-END:variables
+}
+
+class MyKeyListener implements KeyListener {
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        char c = e.getKeyChar();
+        if (!isValid(c)) {
+            e.consume(); // Geçersiz karakterleri tüket
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // Implement your key released logic here if needed
+    }
+
+    private boolean isValid(char c) {
+        // İzin verilen karakterler: rakamlar, +, -, *, /, %, .
+        return Character.isDigit(c) || "(+-*/%,)".indexOf(c) != -1;
+    }
 }
