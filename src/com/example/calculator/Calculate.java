@@ -1,35 +1,33 @@
 package com.example.calculator;
 class Calculate{
-    public int hesapla(){
-        double sayi = 0,sonuc =0;
-        char islem = 0;
-        switch (islem) {
-            case '+':
-                sonuc += sayi;    
-                break;
-            case '-':
-                sonuc -= sayi;
-                break;
-            case '*':
-                sonuc *= sayi;
-                break;
-            case '/':
-                try{
-                    sonuc /= sayi;
-                }
-                catch(ArithmeticException e){
-                    System.out.println("0 'a bölme hatası");
-                }
-                break;
-            case '%':
-                sonuc = sonuc * sayi / 100;
-                break;
-                   
-            default:
-                throw new AssertionError();
-        }
-        return 0;
+    public double add(int a, int b){
+        return a + b;
     }
+    
+    public double subtract(int a, int b){
+        return a - b;
+    }
+    
+    public double multiply(int a, int b){
+        return a * b;
+    }
+    
+    public double divide(int a, int b, int result){
+        if(b == 0){
+            try{
+                result = a/b;
+            }
+            catch(ArithmeticException e){
+                System.out.println("Sıfıra bölme hatası");
+            }
+        }
+        return Integer.MIN_VALUE;
+    }
+    
+    public double percentage(int a, int b){
+        return a * b / 100;
+    }
+    
 }
    
   
