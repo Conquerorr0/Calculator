@@ -46,6 +46,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         btnEquals = new javax.swing.JButton();
         btnPlus = new javax.swing.JButton();
         btnMinus = new javax.swing.JButton();
@@ -66,7 +67,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnC = new javax.swing.JButton();
         btnOne = new javax.swing.JButton();
         btnFour = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblResult = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtInput = new javax.swing.JTextPane();
 
@@ -75,6 +76,17 @@ public class CalculatorGUI extends javax.swing.JFrame {
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hesap Makinesi");
@@ -384,10 +396,10 @@ public class CalculatorGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Result");
+        lblResult.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
+        lblResult.setForeground(new java.awt.Color(204, 204, 204));
+        lblResult.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblResult.setText("Result");
 
         txtInput.setEditable(false);
         txtInput.setBackground(new java.awt.Color(153, 153, 153));
@@ -452,13 +464,16 @@ public class CalculatorGUI extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(btnEquals, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addComponent(jScrollPane1)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblResult, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -520,16 +535,26 @@ public class CalculatorGUI extends javax.swing.JFrame {
             handleOperatorButton("x");
         } else if (keyCode == KeyEvent.VK_DIVIDE) {
             handleOperatorButton("÷");
-        } else if((keyCode == KeyEvent.VK_DELETE || keyCode == KeyEvent.VK_BACK_SPACE) && !input.equals("")){
+        } else if ((keyCode == KeyEvent.VK_DELETE || keyCode == KeyEvent.VK_BACK_SPACE) && !input.equals("")) {
             deleteProcess();
+        } else if (keyCode == KeyEvent.VK_ENTER) {
+            result();
+
         } else {
             System.out.println("Yanlis giris");
         }
     }//GEN-LAST:event_btnZeroKeyPressed
 
+    private void result() {
+        lblResult.setText(txtInput.getText());
+    }
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
-        input = "";
-        txtInput.setText(input);
+        if (txtInput.getText().equals("")) {
+            lblResult.setText("");
+        } else {
+            input = "";
+            txtInput.setText(input);
+        }
     }//GEN-LAST:event_btnCActionPerformed
 
     private void handleNumericButton(String digit) {
@@ -572,20 +597,23 @@ public class CalculatorGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCommaActionPerformed
 
     private void btnEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsActionPerformed
-        // Hesaplamanın sonucu burada
+        // Hesaplamanın sonucu burada   
+        result();
     }//GEN-LAST:event_btnEqualsActionPerformed
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
-        if(!input.equals("")) deleteProcess();
+        if (!input.equals(""))
+            deleteProcess();
     }//GEN-LAST:event_btnDelActionPerformed
-    private void deleteProcess(){
-        if(input.charAt(input.length()-1) == ')'){
-            input = input.substring(1, input.length()-1);
-        }else{
-            input = input.substring(0, input.length()-1);
+    private void deleteProcess() {
+        if (input.charAt(input.length() - 1) == ')') {
+            input = input.substring(1, input.length() - 1);
+        } else {
+            input = input.substring(0, input.length() - 1);
         }
         txtInput.setText(input);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -644,11 +672,12 @@ public class CalculatorGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnTwo;
     private javax.swing.JButton btnZero;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblResult;
     private javax.swing.JTextPane txtInput;
     // End of variables declaration//GEN-END:variables
 }
