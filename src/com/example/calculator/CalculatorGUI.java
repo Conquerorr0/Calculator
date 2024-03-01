@@ -66,7 +66,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
         btnC = new javax.swing.JButton();
         btnOne = new javax.swing.JButton();
         btnFour = new javax.swing.JButton();
-        txtResult = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtInput = new javax.swing.JTextPane();
 
@@ -384,10 +384,10 @@ public class CalculatorGUI extends javax.swing.JFrame {
             }
         });
 
-        txtResult.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
-        txtResult.setForeground(new java.awt.Color(204, 204, 204));
-        txtResult.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        txtResult.setText("Result");
+        jLabel1.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("Result");
 
         txtInput.setEditable(false);
         txtInput.setBackground(new java.awt.Color(153, 153, 153));
@@ -452,13 +452,13 @@ public class CalculatorGUI extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(btnEquals, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addComponent(jScrollPane1)
-            .addComponent(txtResult, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -522,10 +522,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
             handleOperatorButton("÷");
         } else if((keyCode == KeyEvent.VK_DELETE || keyCode == KeyEvent.VK_BACK_SPACE) && !input.equals("")){
             deleteProcess();
-        } else if (keyCode == KeyEvent.VK_ENTER){
-            equalsProcess();
-        }
-        else {
+        } else {
             System.out.println("Yanlis giris");
         }
     }//GEN-LAST:event_btnZeroKeyPressed
@@ -576,7 +573,6 @@ public class CalculatorGUI extends javax.swing.JFrame {
 
     private void btnEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsActionPerformed
         // Hesaplamanın sonucu burada
-        equalsProcess();
     }//GEN-LAST:event_btnEqualsActionPerformed
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
@@ -589,9 +585,6 @@ public class CalculatorGUI extends javax.swing.JFrame {
             input = input.substring(0, input.length()-1);
         }
         txtInput.setText(input);
-    }
-    private void equalsProcess(){
-        txtResult.setText(txtInput.getText());
     }
     /**
      * @param args the command line arguments
@@ -651,12 +644,12 @@ public class CalculatorGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnTwo;
     private javax.swing.JButton btnZero;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane txtInput;
-    private javax.swing.JLabel txtResult;
     // End of variables declaration//GEN-END:variables
 }
 

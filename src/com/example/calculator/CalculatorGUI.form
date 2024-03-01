@@ -104,14 +104,14 @@
               </Group>
           </Group>
           <Component id="jScrollPane1" max="32767" attributes="0"/>
-          <Component id="txtResult" alignment="0" max="32767" attributes="0"/>
+          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtResult" min="-2" pref="102" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="102" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -600,7 +600,7 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnZeroKeyPressed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtResult">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Fax" size="18" style="1"/>
