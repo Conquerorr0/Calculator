@@ -545,19 +545,19 @@ public class CalculatorGUI extends javax.swing.JFrame {
         } else if (keyCode >= KeyEvent.VK_NUMPAD1 && keyCode <= KeyEvent.VK_NUMPAD9) {
             char inputChar = (char) ('0' + (keyCode - KeyEvent.VK_NUMPAD1 + 1));
             handleNumericButton(String.valueOf(inputChar));
-        } else if (keyCode == 107) {
+        } else if (!input.equals("") && input.charAt(input.length()-1) != '(' && keyCode == 107) {
             handleOperatorButton("+");
-        } else if (keyCode == 109) {
+        } else if (!input.equals("") && input.charAt(input.length()-1) != '(' && keyCode == 109) {
             handleOperatorButton("-");
-        } else if (keyCode == KeyEvent.VK_MULTIPLY) {
+        } else if (!input.equals("") && input.charAt(input.length()-1) != '(' && keyCode == KeyEvent.VK_MULTIPLY) {
             handleOperatorButton("x");
-        } else if (keyCode == KeyEvent.VK_DIVIDE) {
+        } else if (!input.equals("") && input.charAt(input.length()-1) != '(' && keyCode == KeyEvent.VK_DIVIDE) {
             handleOperatorButton("÷");
         } else if (!input.equals("") && (keyCode == KeyEvent.VK_DELETE || keyCode == KeyEvent.VK_BACK_SPACE)) {
             deleteProcess();
         } else if (keyCode == KeyEvent.VK_ENTER) {
             result();
-        } else if (keyCode == KeyEvent.VK_COMMA || keyCode == 110) {
+        } else if (!input.equals("") && input.charAt(input.length()-1) != '(' && (keyCode == KeyEvent.VK_COMMA || keyCode == 110)) {
             handleOperatorButton(",");
         } else {
             System.out.println("Yanlis giris");
@@ -575,7 +575,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
             input = String.valueOf(result).replace(".", ",");
         }
         txtInput.setText("");
-
+        input = "";
     }
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
         input = "";
@@ -594,28 +594,40 @@ public class CalculatorGUI extends javax.swing.JFrame {
     }
 
     private void btnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlusActionPerformed
-        handleOperatorButton("+");
+        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+            handleOperatorButton("+");
+        }
     }//GEN-LAST:event_btnPlusActionPerformed
 
     private void btnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusActionPerformed
-        handleOperatorButton("-");
+        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+            handleOperatorButton("-");
+        }
     }//GEN-LAST:event_btnMinusActionPerformed
 
     private void btnTimesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimesActionPerformed
-        handleOperatorButton("x");
+        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+            handleOperatorButton("x");
+        }
     }//GEN-LAST:event_btnTimesActionPerformed
 
     private void btnDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivideActionPerformed
-        handleOperatorButton("÷");
+        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+            handleOperatorButton("÷");
+        }
     }//GEN-LAST:event_btnDivideActionPerformed
 
     private void btnPercantageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPercantageActionPerformed
-        handleOperatorButton("%");
+        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+            handleOperatorButton("%");
+        }
     }//GEN-LAST:event_btnPercantageActionPerformed
 
     private void btnCommaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommaActionPerformed
         // , işlemi burada sayıyı double'a çevirecek
-        handleOperatorButton(",");
+        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+            handleOperatorButton(",");
+        }
     }//GEN-LAST:event_btnCommaActionPerformed
 
     private void btnEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsActionPerformed
