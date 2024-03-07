@@ -21,7 +21,6 @@ public class CalculatorGUI extends javax.swing.JFrame {
     private String input;
     private double result;
     private ProcessPriority pp;
-    private boolean parentheses;
 
     /**
      * Creates new form CalculatorGUI
@@ -34,7 +33,6 @@ public class CalculatorGUI extends javax.swing.JFrame {
         txtInput.setBackground(Color.decode("#9CA6AB"));
         txtInput.setFocusable(true);
         txtInput.addKeyListener(new MyKeyListener());
-        parentheses = false;
     }
 
     /**
@@ -401,7 +399,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
             }
         });
 
-        lblResult.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
+        lblResult.setFont(new java.awt.Font("Lucida Fax", 1, 24)); // NOI18N
         lblResult.setForeground(new java.awt.Color(204, 204, 204));
         lblResult.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblResult.setText("Result");
@@ -441,10 +439,6 @@ public class CalculatorGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jScrollPane1)
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -489,11 +483,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
                                 .addGap(0, 0, 0)
                                 .addComponent(btnTimes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
                                 .addComponent(btnPercantage, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(btnDivide, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(lblResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -559,7 +553,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
             handleOperatorButton("x");
         } else if (keyCode == KeyEvent.VK_DIVIDE) {
             handleOperatorButton("÷");
-        } else if ((keyCode == KeyEvent.VK_DELETE || keyCode == KeyEvent.VK_BACK_SPACE) && !input.equals("")) {
+        } else if (!input.equals("") && (keyCode == KeyEvent.VK_DELETE || keyCode == KeyEvent.VK_BACK_SPACE)) {
             deleteProcess();
         } else if (keyCode == KeyEvent.VK_ENTER) {
             result();
@@ -577,8 +571,8 @@ public class CalculatorGUI extends javax.swing.JFrame {
             lblResult.setText((int) result + "");
             input = (int) result + "";
         } else {
-            lblResult.setText(result + "");
-            input = result + "";
+            lblResult.setText(String.valueOf(result).replace(".", ","));
+            input = String.valueOf(result).replace(".", ",");
         }
         txtInput.setText("");
 
