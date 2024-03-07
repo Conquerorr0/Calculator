@@ -537,7 +537,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
     private void btnZeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnZeroKeyPressed
         // İlgili klavye tuşlarıylada işlem yapabilme
         int keyCode = evt.getKeyCode();
-        if (keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_NUMPAD0) {
+        if (keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_NUMPAD0 ) {
             handleNumericButton("0");
         } else if (keyCode >= KeyEvent.VK_1 && keyCode <= KeyEvent.VK_9) {
             char inputChar = (char) ('0' + (keyCode - KeyEvent.VK_1 + 1));
@@ -545,19 +545,31 @@ public class CalculatorGUI extends javax.swing.JFrame {
         } else if (keyCode >= KeyEvent.VK_NUMPAD1 && keyCode <= KeyEvent.VK_NUMPAD9) {
             char inputChar = (char) ('0' + (keyCode - KeyEvent.VK_NUMPAD1 + 1));
             handleNumericButton(String.valueOf(inputChar));
-        } else if (!input.equals("") && input.charAt(input.length()-1) != '(' && keyCode == 107) {
+        } else if (!input.equals("") && input.charAt(input.length() - 1) != '(' && keyCode == 107) {
+            if (input.charAt(input.length() - 1) == '-') {
+                input = deleteLastCharachter(input);
+            }
             handleOperatorButton("+");
-        } else if (!input.equals("") && input.charAt(input.length()-1) != '(' && keyCode == 109) {
+        } else if (!input.equals("") && input.charAt(input.length() - 1) != '(' && keyCode == 109) {
+            if (input.charAt(input.length() - 1) == '+') {
+                input = deleteLastCharachter(input);
+            }
             handleOperatorButton("-");
-        } else if (!input.equals("") && input.charAt(input.length()-1) != '(' && keyCode == KeyEvent.VK_MULTIPLY) {
+        } else if (!input.equals("") && input.charAt(input.length() - 1) != '(' && keyCode == KeyEvent.VK_MULTIPLY) {
+            if (input.charAt(input.length() - 1) == '÷') {
+                input = deleteLastCharachter(input);
+            }
             handleOperatorButton("x");
-        } else if (!input.equals("") && input.charAt(input.length()-1) != '(' && keyCode == KeyEvent.VK_DIVIDE) {
+        } else if (!input.equals("") && input.charAt(input.length() - 1) != '(' && keyCode == KeyEvent.VK_DIVIDE) {
+            if (input.charAt(input.length() - 1) == 'x') {
+                input = deleteLastCharachter(input);
+            }
             handleOperatorButton("÷");
         } else if (!input.equals("") && (keyCode == KeyEvent.VK_DELETE || keyCode == KeyEvent.VK_BACK_SPACE)) {
             deleteProcess();
         } else if (keyCode == KeyEvent.VK_ENTER) {
             result();
-        } else if (!input.equals("") && input.charAt(input.length()-1) != '(' && (keyCode == KeyEvent.VK_COMMA || keyCode == 110)) {
+        } else if (!input.equals("") && input.charAt(input.length() - 1) != '(' && (keyCode == KeyEvent.VK_COMMA || keyCode == 110)) {
             handleOperatorButton(",");
         } else {
             System.out.println("Yanlis giris");
@@ -577,6 +589,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
         txtInput.setText("");
         input = "";
     }
+
+    private String deleteLastCharachter(String input) {
+        return input.substring(0, input.length() - 1);
+    }
+
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
         input = "";
         lblResult.setText("");
@@ -589,43 +606,58 @@ public class CalculatorGUI extends javax.swing.JFrame {
     }
 
     private void handleOperatorButton(String operator) {
-        input += operator;
-        txtInput.setText(input);
+        char op = input.charAt(input.length()-1);
+        if(op != '+' && op != '-' && op != 'x' && op != '÷'){
+            input += operator;
+            txtInput.setText(input);
+        }
     }
 
     private void btnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlusActionPerformed
-        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+        if (input.charAt(input.length() - 1) == '-') {
+            input = deleteLastCharachter(input);
+        }
+        if (!input.equals("") && input.charAt(input.length() - 1) != '(') {
             handleOperatorButton("+");
         }
     }//GEN-LAST:event_btnPlusActionPerformed
 
     private void btnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusActionPerformed
-        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+        if (input.charAt(input.length() - 1) == '+') {
+            input = deleteLastCharachter(input);
+        }
+        if (!input.equals("") && input.charAt(input.length() - 1) != '(') {
             handleOperatorButton("-");
         }
     }//GEN-LAST:event_btnMinusActionPerformed
 
     private void btnTimesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimesActionPerformed
-        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+        if (input.charAt(input.length() - 1) == '÷') {
+            input = deleteLastCharachter(input);
+        }
+        if (!input.equals("") && input.charAt(input.length() - 1) != '(') {
             handleOperatorButton("x");
         }
     }//GEN-LAST:event_btnTimesActionPerformed
 
     private void btnDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivideActionPerformed
-        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+        if (input.charAt(input.length() - 1) == 'x') {
+            input = deleteLastCharachter(input);
+        }
+        if (!input.equals("") && input.charAt(input.length() - 1) != '(') {
             handleOperatorButton("÷");
         }
     }//GEN-LAST:event_btnDivideActionPerformed
 
     private void btnPercantageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPercantageActionPerformed
-        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+        if (!input.equals("") && input.charAt(input.length() - 1) != '(') {
             handleOperatorButton("%");
         }
     }//GEN-LAST:event_btnPercantageActionPerformed
 
     private void btnCommaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommaActionPerformed
         // , işlemi burada sayıyı double'a çevirecek
-        if(!input.equals("") && input.charAt(input.length()-1) != '('){
+        if (!input.equals("") && input.charAt(input.length() - 1) != '(') {
             handleOperatorButton(",");
         }
     }//GEN-LAST:event_btnCommaActionPerformed
@@ -641,11 +673,11 @@ public class CalculatorGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDelActionPerformed
 
     private void btnOpenPrnthsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenPrnthsActionPerformed
-        handleOperatorButton("(");
+        handleNumericButton("(");
     }//GEN-LAST:event_btnOpenPrnthsActionPerformed
 
     private void btnClosePrnthsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClosePrnthsActionPerformed
-        handleOperatorButton(")");
+        handleNumericButton(")");
     }//GEN-LAST:event_btnClosePrnthsActionPerformed
     private void deleteProcess() {
         input = input.substring(0, input.length() - 1);
