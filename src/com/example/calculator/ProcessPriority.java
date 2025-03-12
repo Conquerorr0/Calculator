@@ -2,85 +2,129 @@ package com.example.calculator;
 
 import java.util.Stack;
 
+/**
+ * Matematiksel ifadeleri işlem önceliğine göre değerlendiren sınıf.
+ */
 public class ProcessPriority {
+    private final String input;
+    private final double result;
 
-    private String input;
-    private double result;
+    /**
+     * @param input Değerlendirilecek matematiksel ifade
+     */
     public ProcessPriority(String input) {
         this.input = input;
-        result = calculateExpression(input);
+        this.result = calculateExpression(input);
     }
 
+    /**
+     * Matematiksel ifadeyi değerlendirir
+     * @param expression Değerlendirilecek ifade
+     * @return Sonuç
+     */
     public static double calculateExpression(String expression) {
         return evaluateExpression(expression);
     }
 
-    public static double evaluateExpression(String expression) {
-        expression = expression.replaceAll("\\s+", ""); // Boşlukları kaldır
+    /**
+     * İfadeyi tokenize edip hesaplar
+     * @param expression Değerlendirilecek ifade
+     * @return Sonuç
+     * @throws IllegalArgumentException Geçersiz ifade durumunda
+     */
+    private static double evaluateExpression(String expression) {
+        expression = expression.replaceAll("\\s+", "");
         char[] tokens = expression.toCharArray();
 
-        // Operandlar ve operatörler için stack'ler oluştur
         Stack<Double> values = new Stack<>();
-        Stack<Character> operators = new Stack<>();
+        Stack<Operator> operators = new Stack<>();
 
+        StringBuilder number = new StringBuilder();
+        
         for (int i = 0; i < tokens.length; i++) {
-            if (tokens[i] == '(') {
-                operators.push(tokens[i]);
-            } else if (Character.isDigit(tokens[i])) {
-                StringBuilder sb = new StringBuilder();
-                while (i < tokens.length && (Character.isDigit(tokens[i]) || tokens[i] == ',')) {
-                    sb.append(tokens[i++]);
+            if (Character.isDigit(tokens[i]) || tokens[i] == ',') {
+                number.append(tokens[i] == ',' ? '.' : tokens[i]);
+            } else {
+                if (number.length() > 0) {
+                    values.push(Double.parseDouble(number.toString()));
+                    number.setLength(0);
                 }
-                values.push(Double.parseDouble(sb.toString().replace(',', '.')));
-                i--;
-            } else if (tokens[i] == ')') {
-                while (operators.peek() != '(') {
-                    values.push(applyOperation(operators.pop(), values.pop(), values.pop()));
+
+                Operator currentOp = Operator.fromChar(tokens[i]);
+                if (currentOp == null) {
+                    throw new IllegalArgumentException("Geçersiz operatör: " + tokens[i]);
                 }
-                operators.pop();
-            } else if (tokens[i] == '+' || tokens[i] == '-' || tokens[i] == 'x' || tokens[i] == '÷' || tokens[i] == '%') {
-                while (!operators.empty() && hasPrecedence(tokens[i], operators.peek())) {
-                    values.push(applyOperation(operators.pop(), values.pop(), values.pop()));
+
+                if (currentOp == Operator.LEFT_PARENTHESIS) {
+                    operators.push(currentOp);
+                } else if (currentOp == Operator.RIGHT_PARENTHESIS) {
+                    while (!operators.isEmpty() && operators.peek() != Operator.LEFT_PARENTHESIS) {
+                        evaluateTop(values, operators);
+                    }
+                    if (!operators.isEmpty()) {
+                        operators.pop(); // Sol parantezi çıkar
+                    }
+                } else {
+                    while (!operators.isEmpty() && currentOp.hasLowerOrEqualPrecedence(operators.peek())) {
+                        evaluateTop(values, operators);
+                    }
+                    operators.push(currentOp);
                 }
-                operators.push(tokens[i]);
             }
         }
 
-        while (!operators.empty()) {
-            values.push(applyOperation(operators.pop(), values.pop(), values.pop()));
+        if (number.length() > 0) {
+            values.push(Double.parseDouble(number.toString()));
+        }
+
+        while (!operators.isEmpty()) {
+            evaluateTop(values, operators);
+        }
+
+        if (values.isEmpty()) {
+            throw new IllegalArgumentException("Geçersiz ifade");
         }
 
         return values.pop();
     }
 
-    public static boolean hasPrecedence(char op1, char op2) {
-        if (op2 == '(' || op2 == ')') {
-            return false;
+    /**
+     * Stack'in en üstündeki operatörü ve değerleri kullanarak işlem yapar
+     * @param values Değer stack'i
+     * @param operators Operatör stack'i
+     */
+    private static void evaluateTop(Stack<Double> values, Stack<Operator> operators) {
+        if (values.size() < 2) {
+            throw new IllegalArgumentException("Yetersiz operand");
         }
-        return (op1 != 'x' && op1 != '÷' && op1 != '%') || (op2 != '+' && op2 != '-');
-    }
 
-    public static double applyOperation(char operator, double b, double a) {
-        switch (operator) {
-            case '+':
-                return Calculate.add(a, b);
-            case '-':
-                return Calculate.subtract(a, b);
-            case 'x':
-                return Calculate.multiply(a, b);
-            case '÷':
-                if (b == 0) {
-                    throw new ArithmeticException("Division by zero!");
-                }
-                return Calculate.divide(a, b);
-            case '%':
-                return Calculate.percentage(a, b);
+        double b = values.pop();
+        double a = values.pop();
+        Operator op = operators.pop();
+
+        switch (op) {
+            case ADD:
+                values.push(Calculate.add(a, b));
+                break;
+            case SUBTRACT:
+                values.push(Calculate.subtract(a, b));
+                break;
+            case MULTIPLY:
+                values.push(Calculate.multiply(a, b));
+                break;
+            case DIVIDE:
+                values.push(Calculate.divide(a, b));
+                break;
+            case PERCENTAGE:
+                values.push(Calculate.percentage(a, b));
+                break;
+            default:
+                throw new IllegalStateException("Beklenmeyen operatör: " + op);
         }
-        return 0;
     }
 
     /**
-     * @return the result
+     * @return Hesaplama sonucu
      */
     public double getResult() {
         return result;
